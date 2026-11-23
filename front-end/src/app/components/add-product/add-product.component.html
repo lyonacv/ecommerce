@@ -1,0 +1,34 @@
+<div class="add-product-container">
+    <div class="header-row">
+        <button (click)="toggleAddProduct()" class="btn btn-primary">
+            {{ isAddingProduct() ? 'Cancel' : 'Add Product' }}
+        </button>
+    </div>
+
+    @if (isAddingProduct()) {
+    <div class="add-product-form" [formGroup]="productForm">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" formControlName="title" placeholder="Product Title">
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="number" formControlName="price" placeholder="Price">
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select formControlName="category">
+                <option [ngValue]="null" disabled>Select Category</option>
+                @for (cat of categories(); track cat.id) {
+                <option [value]="cat.id">{{ cat.name }}</option>
+                }
+            </select>
+        </div>
+        <div class="form-group full-width">
+            <label>Description</label>
+            <textarea formControlName="description" placeholder="Description"></textarea>
+        </div>
+        <button (click)="createProduct()" [disabled]="productForm.invalid" class="btn btn-success">Save Product</button>
+    </div>
+    }
+</div>

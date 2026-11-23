@@ -1,0 +1,23 @@
+<div class="product-card">
+    <div class="image-container">
+        <img [src]="product().image" [alt]="product().title" loading="lazy" />
+    </div>
+    <div class="card-body">
+        <p class="category">{{ product().category.name }}</p>
+        <h3 class="title" [title]="product().title">{{ product().title }}</h3>
+        <div class="footer">
+            <span class="price">{{ product().price | currency }}</span>
+            <div class="card-actions">
+                <button class="btn btn-primary" (click)="onAddToCart()">Add to Cart</button>
+                <div class="admin-actions">
+                    <button class="btn-icon btn-edit" (click)="onEdit($event)" title="Edit">
+                        ✎
+                    </button>
+                    <button class="btn-icon btn-remove" (click)="onRemove()" title="Remove">
+                        ×
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

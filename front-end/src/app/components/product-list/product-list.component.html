@@ -1,0 +1,23 @@
+<div class="container section">
+    <app-add-product />
+
+    <div class="controls-row">
+        <button (click)="toggleCategories()" class="btn btn-secondary">
+            {{ showCategories() ? 'Hide Categories' : 'Show Categories' }}
+        </button>
+    </div>
+
+    @if (showCategories()) {
+    <app-category-list />
+    }
+    <div class="product-grid">
+        @for (product of products(); track product.id) {
+        <app-product-card [product]="product" (addToCart)="addToCart($event)" (remove)="removeProduct($event)"
+            (edit)="handleEditProduct($event)" />
+        }
+    </div>
+
+    @if (editingProduct(); as product) {
+    <app-edit-product [product]="product" (close)="closeEdit()" />
+    }
+</div>

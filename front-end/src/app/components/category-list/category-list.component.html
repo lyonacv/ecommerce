@@ -1,0 +1,9 @@
+<div class="category-list-container">
+    <app-add-category (addCategory)="addToCategory($event)" />
+
+    <div class="category-list">
+        @for (cat of categories(); track cat.id) {
+        <app-category-card [category]="cat" (remove)="handleRemove($event)" (edit)="handleEdit($event)" />
+        }
+    </div>
+</div>
