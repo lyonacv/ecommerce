@@ -1,0 +1,23 @@
+package com.lyon.ecommerce.beans;
+
+public class RatingBean {
+
+    public Double rate;
+    public Integer count;
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+}
